@@ -4,115 +4,165 @@
  *
  * @format
  */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+// import 'react-native-gesture-handler'
 import {
+  createDrawerNavigator,
+  DrawerContentComponentProps,
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import {
+  Alert,
+  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
   useColorScheme,
   View,
 } from 'react-native';
+import WeekByWeek from './src/features/WeekByWeek';
+import MealPlan from './src/features/MealPlan';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Drawer = createDrawerNavigator();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <DrawerContentScrollView {...props}>
+      <View className="flex items-center py-[18px] border-b border-gray-200 mb-1 bg-green-500">
+        <Image
+          source={{ uri: 'https://via.placeholder.com/150' }}
+          className="w-[100px] h-[100px] rounded-full"
+        />
+        <Text className="mt-[10px] text-xl font-bold text text-white">
+          Pregnancy Week by Week
+        </Text>
+      </View>
+      <DrawerItemList {...props} />
+      <View className="h-[1px] my-[5px] bg-gray-200" />
+      <DrawerItem
+        label="Settings"
+        onPress={function () {
+          Alert.alert('clicked on settings');
+        }}
+      />
+    </DrawerContentScrollView>
+  );
+};
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Week by week"
+      // eslint-disable-next-line react/no-unstable-nested-components
+      drawerContent={props => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: '#22c55e',
+        },
+      }}>
+      <Drawer.Screen
+        name="Week by week"
+        component={WeekByWeek}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Meal Plan"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Calendar"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Preganancy Items"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Weight Tracker"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Bump Gallery"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Kegel Exercises"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Kicks Counter"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+      <Drawer.Screen
+        name="Countdown Counter"
+        component={MealPlan}
+        options={{
+          drawerActiveTintColor: '#fff',
+          drawerActiveBackgroundColor: '#22c55e',
+        }}
+      />
+    </Drawer.Navigator>
   );
 }
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+    <NavigationContainer>
+      <SafeAreaView
+        className={`h-full ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
+        <ScrollView
+          className="flex-1"
+          // eslint-disable-next-line react-native/no-inline-styles
+          contentContainerStyle={{
+            height: '100%',
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={'#22c55e'}
+          />
+          <MyDrawer />
+        </ScrollView>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
