@@ -15,7 +15,6 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {
-  Alert,
   Image,
   SafeAreaView,
   ScrollView,
@@ -26,6 +25,15 @@ import {
 } from 'react-native';
 import WeekByWeek from './src/features/WeekByWeek';
 import MealPlan from './src/features/MealPlan';
+import ContractionCounter from './src/features/ContractionCounter';
+import KicksCounter from './src/features/KicksCounter';
+import KegelExercises from './src/features/KegelExercises';
+import BumpGallery from './src/features/BumpGallery';
+import WeightTracker from './src/features/WeightTracker';
+import PregnancyItems from './src/features/PregnancyItems';
+import Calender from './src/features/Calender';
+import Settings from './src/features/Settings';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Drawer = createDrawerNavigator();
 
@@ -46,7 +54,7 @@ const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
       <DrawerItem
         label="Settings"
         onPress={function () {
-          Alert.alert('clicked on settings');
+          props.navigation.navigate('Settings');
         }}
       />
     </DrawerContentScrollView>
@@ -56,7 +64,7 @@ const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
 function MyDrawer() {
   return (
     <Drawer.Navigator
-      initialRouteName="Week by week"
+      initialRouteName="Meal Plan"
       // eslint-disable-next-line react/no-unstable-nested-components
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{
@@ -83,7 +91,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Calendar"
-        component={MealPlan}
+        component={Calender}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
@@ -91,7 +99,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Preganancy Items"
-        component={MealPlan}
+        component={PregnancyItems}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
@@ -99,7 +107,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Weight Tracker"
-        component={MealPlan}
+        component={WeightTracker}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
@@ -107,7 +115,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Bump Gallery"
-        component={MealPlan}
+        component={BumpGallery}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
@@ -115,7 +123,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Kegel Exercises"
-        component={MealPlan}
+        component={KegelExercises}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
@@ -123,15 +131,15 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Kicks Counter"
-        component={MealPlan}
+        component={KicksCounter}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
         }}
       />
       <Drawer.Screen
-        name="Countdown Counter"
-        component={MealPlan}
+        name="Contraction Counter"
+        component={ContractionCounter}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
@@ -143,6 +151,7 @@ function MyDrawer() {
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
@@ -158,7 +167,15 @@ function App(): React.JSX.Element {
             barStyle={isDarkMode ? 'light-content' : 'dark-content'}
             backgroundColor={'#22c55e'}
           />
-          <MyDrawer />
+          <Stack.Navigator>
+            {/* Your other screens */}
+            <Stack.Screen
+              name="MainApp"
+              component={MyDrawer}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="Settings" component={Settings} />
+          </Stack.Navigator>
         </ScrollView>
       </SafeAreaView>
     </NavigationContainer>
