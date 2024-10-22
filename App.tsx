@@ -66,7 +66,7 @@ const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
 function MyDrawer() {
   return (
     <Drawer.Navigator
-      initialRouteName="Calendar"
+      initialRouteName="Week by week"
       // eslint-disable-next-line react/no-unstable-nested-components
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{
