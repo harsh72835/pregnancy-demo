@@ -4,7 +4,7 @@ import React from 'react';
 const Records = () => {
   return (
     <>
-      <View className="flex bg-white m-2 shadow-2xl p-4">
+      <View className="flex bg-white m-2 shadow-2xl p-4 rounded-lg">
         <View className="flex flex-row gap-2 justify-between">
           <Text className="text-center text-base font-bold">Date</Text>
           <Text className="text-center text-base font-bold">Contraction</Text>

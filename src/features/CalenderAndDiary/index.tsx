@@ -1,11 +1,11 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Exercises from './Exercises';
-import Statistics from './Statistics';
+import Calender from './Calender';
+import Notes from './Notes';
 
 const Tab = createMaterialTopTabNavigator();
 
-const KegelExercises = () => {
+const CalenderAndDiary = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -28,10 +28,10 @@ const KegelExercises = () => {
           backgroundColor: 'orange',
         },
       }}>
-      <Tab.Screen name="Exercises" component={Exercises} />
-      <Tab.Screen name="Statistics" component={Statistics} />
+      <Tab.Screen name="Calender" component={Calender} />
+      <Tab.Screen name="Notes" component={Notes} />
     </Tab.Navigator>
   );
 };
 
-export default KegelExercises;
+export default CalenderAndDiary;

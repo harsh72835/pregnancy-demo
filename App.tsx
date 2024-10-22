@@ -31,7 +31,7 @@ import KegelExercises from './src/features/KegelExercises';
 import BumpGallery from './src/features/BumpGallery';
 import WeightTracker from './src/features/WeightTracker';
 import PregnancyItems from './src/features/PregnancyItems';
-import Calender from './src/features/Calender';
+import Calender from './src/features/CalenderAndDiary';
 import Settings from './src/features/Settings';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -53,6 +53,8 @@ const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
       <View className="h-[1px] my-[5px] bg-gray-200" />
       <DrawerItem
         label="Settings"
+        activeTintColor="#22c55e"
+        activeBackgroundColor="#22c55e"
         onPress={function () {
           props.navigation.navigate('Settings');
         }}
@@ -64,7 +66,7 @@ const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
 function MyDrawer() {
   return (
     <Drawer.Navigator
-      initialRouteName="Meal Plan"
+      initialRouteName="Calendar"
       // eslint-disable-next-line react/no-unstable-nested-components
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{
@@ -167,14 +169,20 @@ function App(): React.JSX.Element {
             barStyle={isDarkMode ? 'light-content' : 'dark-content'}
             backgroundColor={'#22c55e'}
           />
-          <Stack.Navigator>
+          <Stack.Navigator
+            screenOptions={{
+              headerTintColor: '#fff',
+              headerStyle: {
+                backgroundColor: '#22c55e',
+              },
+            }}>
             {/* Your other screens */}
             <Stack.Screen
               name="MainApp"
               component={MyDrawer}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="Settings" component={Settings} />
+            <Stack.Screen name="Settings" component={Settings} options={{}} />
           </Stack.Navigator>
         </ScrollView>
       </SafeAreaView>

@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import React from 'react';
 
 const Records = () => {
   return (
-    <>
-      <View className="flex bg-white m-2 shadow-2xl p-4">
+    <ScrollView>
+      <View className="flex bg-white m-2 shadow-2xl p-4 rounded-lg">
         <View className="flex flex-row gap-2 justify-between">
           <Text className="text-center text-base font-bold">Date</Text>
           <Text className="text-center text-base font-bold">Start</Text>
@@ -16,7 +16,7 @@ const Records = () => {
         <Text>Records</Text>
         <Text>TODO: accordian here</Text>
       </View>
-    </>
+    </ScrollView>
   );
 };
 
