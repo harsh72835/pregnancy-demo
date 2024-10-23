@@ -9,9 +9,9 @@ const Stack = createStackNavigator();
 
 const Index = () => {
   return (
-    <Stack.Navigator initialRouteName="HomeScreen">
+    <Stack.Navigator initialRouteName="NestedHome">
       <Stack.Screen
-        name="Home"
+        name="NestedHome"
         component={NestedHome}
         options={{ headerShown: false }}
       />

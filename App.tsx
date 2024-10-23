@@ -34,6 +34,7 @@ import PregnancyItems from './src/features/PregnancyItems';
 import Calender from './src/features/CalenderAndDiary';
 import Settings from './src/features/Settings';
 import { createStackNavigator } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Drawer = createDrawerNavigator();
 
@@ -55,6 +56,7 @@ const CustomDrawerContent: React.FC<DrawerContentComponentProps> = props => {
         label="Settings"
         activeTintColor="#22c55e"
         activeBackgroundColor="#22c55e"
+        icon={props => <Icon name="settings" {...props} />}
         onPress={function () {
           props.navigation.navigate('Settings');
         }}
@@ -74,6 +76,12 @@ function MyDrawer() {
         headerStyle: {
           backgroundColor: '#22c55e',
         },
+        drawerItemStyle: {
+          padding: 0, // Reduced padding
+          marginVertical: 4,
+          marginHorizontal: 8,
+          borderRadius: 8,
+        },
       }}>
       <Drawer.Screen
         name="Week by week"
@@ -81,14 +89,17 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          // eslint-disable-next-line react/no-unstable-nested-components
+          drawerIcon: props => <Icon name="home" {...props} />,
         }}
       />
       <Drawer.Screen
-        name="Meal Plan"
+        name="Healthy Meal Plan"
         component={MealPlan}
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          drawerIcon: props => <Icon name="apple" {...props} />,
         }}
       />
       <Drawer.Screen
@@ -97,6 +108,7 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          drawerIcon: props => <Icon name="event" {...props} />,
         }}
       />
       <Drawer.Screen
@@ -105,6 +117,8 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          // eslint-disable-next-line react/no-unstable-nested-components
+          drawerIcon: props => <Icon name="notes" {...props} />,
         }}
       />
       <Drawer.Screen
@@ -113,6 +127,7 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          drawerIcon: props => <Icon name="scale" {...props} />,
         }}
       />
       <Drawer.Screen
@@ -121,6 +136,7 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          drawerIcon: props => <Icon name="photo" {...props} />,
         }}
       />
       <Drawer.Screen
@@ -129,6 +145,7 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          drawerIcon: props => <Icon name="fitbit" {...props} />,
         }}
       />
       <Drawer.Screen
@@ -137,6 +154,7 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          drawerIcon: props => <Icon name="pets" {...props} />,
         }}
       />
       <Drawer.Screen
@@ -145,6 +163,7 @@ function MyDrawer() {
         options={{
           drawerActiveTintColor: '#fff',
           drawerActiveBackgroundColor: '#22c55e',
+          drawerIcon: props => <Icon name="bolt" {...props} />,
         }}
       />
     </Drawer.Navigator>

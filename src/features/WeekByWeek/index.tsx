@@ -34,7 +34,7 @@ const WeekByWeek = () => {
         tabBarIndicatorStyle: {
           backgroundColor: 'white',
           height: '100%',
-          borderRadius: 20,
+          borderRadius: 26,
         },
       }}>
       <Tab.Screen name="Home" component={Home} />
